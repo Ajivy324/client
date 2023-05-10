@@ -3,16 +3,16 @@ import axios from 'axios';
 
 const Form = () => {
 
-    const [title, setTitle] = useState ("Loading...")
-    const [price, setPrice] = useState ("Loading...")
-    const [descrip, setDescrip] = useState ("Loading...")
+    const [title, setTitle] = useState ("")
+    const [price, setPrice] = useState ("")
+    const [descrip, setDescrip] = useState ("")
 
 
-    useEffect(() => {
+    /*useEffect(() => {
         axios.get("http://localhost:8000/api")
             .then(res=>setTitle(res.data.title))
             .catch(err=>console.log(err))
-    }, []);
+    }, []);*/
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -26,23 +26,26 @@ const Form = () => {
                 console.log(res.data);
             })
             .catch(err=>console.log(err))
+            setTitle("")
+            setPrice("")
+            setDescrip("")
     }
     return (
         <div>
             <form onSubmit={onSubmitHandler} className='col-md-5 offset-1'>
                 <p>
                     <label>Title</label><br/>
-                    <input type="text" class="form-control" onChange = {(e)=>setTitle(e.target.value)}/>
+                    <input type="text" className="form-control" onChange = {(e)=>setTitle(e.target.value)} value={ title}/>
                 </p>
                 <p>
                     <label>Price</label><br/>
-                    <input type="text" class="form-control" onChange = {(e)=>setPrice(e.target.value)}/>
+                    <input type="text" className="form-control" onChange = {(e)=>setPrice(e.target.value)} value={price}/>
                 </p>
                 <p>
                     <label>Description</label><br/>
-                    <input type="text" class="form-control"  onChange = {(e)=>setDescrip(e.target.value)}/>
+                    <input type="text" className="form-control"  onChange = {(e)=>setDescrip(e.target.value)} value={descrip}/>
                 </p>
-                <button type='submit'>Create</button>
+                <button type='submit' className="btn btn-primary" >Create</button>
             </form>
         </div>
     )
