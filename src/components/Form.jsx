@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 
-const Form = () => {
-
+const Form = (props) => {
+    
+    const {products, setProducts} = props;
     const [title, setTitle] = useState ("")
     const [price, setPrice] = useState ("")
     const [descrip, setDescrip] = useState ("")
@@ -24,6 +25,7 @@ const Form = () => {
             .then(res=>{
                 console.log(res); 
                 console.log(res.data);
+                setProducts([...products, res.data]);
             })
             .catch(err=>console.log(err))
             setTitle("")
@@ -32,7 +34,7 @@ const Form = () => {
     }
     return (
         <div>
-            <form onSubmit={onSubmitHandler} className='col-md-5 offset-1'>
+            <form onSubmit={onSubmitHandler} className='col-md-3'>
                 <p>
                     <label>Title</label><br/>
                     <input type="text" className="form-control" onChange = {(e)=>setTitle(e.target.value)} value={ title}/>
