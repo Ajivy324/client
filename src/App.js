@@ -6,6 +6,7 @@ import OneProduct from './components/OneProduct';
 import './App.css';
 import Form from './components/Form';
 import ProductList from './components/ProductList';
+import UpdateProduct from './components/UpdateProduct';
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
       <Routes>
       <Route element={<Main/>} path="/home" default /> 
       <Route element={<OneProduct/>} path="/products/:id" />
+      <Route element={<UpdateProduct/>} path='/products/edit/:id' />
       </Routes>
     </BrowserRouter>
     </div>
