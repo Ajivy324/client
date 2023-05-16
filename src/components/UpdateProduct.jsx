@@ -51,9 +51,9 @@ const UpdateProduct = (props) => {
                 <label>Description</label><br/>
                 <input type="text" name='descrip' className="form-control"  onChange = {(e)=>setDescrip(e.target.value)} value={descrip}/>
             </p>
-            <button type='submit' className="btn btn-primary" >Update</button>
+            <button type='submit' className="btn btn-danger" >Update</button>
         </form>
-        <Link to={'/home'}>Back to Products</Link>
+        <Link to={'/home'}>Home</Link>
     </div>
     )
 }
